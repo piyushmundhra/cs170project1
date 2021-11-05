@@ -1,6 +1,7 @@
 import pandas as pd
 from copy import deepcopy
 
+# these are hardcoded indices that indicate where there is a 'trench recess'
 doubleSpaces = [4,6,8]
 doubleIndices = [11,12,13]
 
@@ -29,6 +30,9 @@ class Board():
         b = pd.Series([' ',' ',' ', self.board[11], ' ', self.board[12], ' ', self.board[13], ' ', ' '])
         df = pd.DataFrame([b,a])
         return df.to_string(index=False, header=False)
+
+    def isSolved(self):
+        return self.board == [0,1,2,3,4,5,6,7,8,9,0,0,0,0]
 
 # FOR CHECKDOWN AND CHECKUP:
 # i : NUMBER whose above/below positions will be checked. Will return a tuple: (is valid move, index of checked space)
